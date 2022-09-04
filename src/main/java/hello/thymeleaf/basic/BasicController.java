@@ -92,6 +92,13 @@ public class BasicController {
         return "basic/operation";
     }
 
+    @GetMapping("/attribute")
+    public String attribute(Model model) {
+        model.addAttribute("isCheckedT", true);
+        model.addAttribute("isCheckedF", false);
+        return "basic/attribute";
+    }
+
     @Component("helloBean")
     static class HelloBean {
         public String hello(String data) {
