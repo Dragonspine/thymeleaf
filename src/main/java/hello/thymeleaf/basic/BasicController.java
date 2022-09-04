@@ -99,6 +99,33 @@ public class BasicController {
         return "basic/attribute";
     }
 
+    @GetMapping("/each")
+    public String each(Model model) {
+        addUsers(model);
+        addUserMap(model);
+        return "basic/each";
+    }
+
+    private void addUsers(Model model) {
+        List<User> list = new ArrayList<>();
+        list.add(new User("UserA", 10));
+        list.add(new User("UserB", 20));
+        list.add(new User("UserC", 30));
+        list.add(new User("UserD", 40));
+
+        model.addAttribute("users", list);
+    }
+
+    private void addUserMap(Model model) {
+        Map<String, User> map = new HashMap<>();
+        map.put("UserA", new User("UserA", 10));
+        map.put("UserB", new User("UserB", 20));
+        map.put("UserC", new User("UserC", 30));
+        map.put("UserD", new User("UserD", 40));
+
+        model.addAttribute("userMap", map);
+    }
+
     @Component("helloBean")
     static class HelloBean {
         public String hello(String data) {
